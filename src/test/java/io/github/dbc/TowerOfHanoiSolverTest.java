@@ -35,11 +35,26 @@ class TowerOfHanoiSolverTest {
         Assertions.assertEquals(31, outputStreamCaptor.toString().split(System.lineSeparator()).length, "Minimum steps required to solve Tower of Hanoi for five disks is 31");
     }
 
+    @Test
+    void solveTowerOfHanoiForThreeDisksFirstStep() {
+        solver.solveTowerOfHanoi(3, 'A', 'C', 'B');
+        Assertions.assertEquals("Move disk from A to C", outputStreamCaptor.toString().split(System.lineSeparator())[0], "First step of Tower of Hanoi for three disks is 'Move disk from A to C'");
+    }
+
+    @Test
+    void solveTowerOfHanoiForThreeDisksLastStep() {
+        solver.solveTowerOfHanoi(3, 'A', 'C', 'B');
+        Assertions.assertEquals("Move disk from A to C", outputStreamCaptor.toString().split(System.lineSeparator())[6], "Last step of Tower of Hanoi for three disks is 'Move disk from A to C'");
+    }
+
+    //
+
     @Order(1)
     @Test
     void solveTowerOfHanoiForThreeDisksCheckIfSomethingIsPrintedOnTheScreen() {
         solver.solveTowerOfHanoi(3, 'A', 'C', 'B');
         Assertions.assertNotEquals("", outputStreamCaptor.toString(), "The steps to solve the Tower of Hanoi for three disks should be printed on the screen!");
     }
+
 
 }
